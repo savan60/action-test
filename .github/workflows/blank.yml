@@ -6,9 +6,9 @@ name: First Actions
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "gcp-dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "gcp-dev" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -36,3 +36,20 @@ jobs:
           echo test, and deploy your project.
           echo what is the version of java?
           java --version
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'README.md'
+        destination_repo: 'savan60/action-test-dest'
+        destination_folder: 'test1'
+        user_email: 'matariyasavanh@gmail.com'
+        user_name: 'savan60'
+        commit_message: 'A custom message for the commit of actions'
