@@ -47,9 +47,9 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_file: 'README.md'
+        source_file: 'executor'
         destination_repo: 'savan60/action-test-dest'
-        destination_folder: 'test1'
+        destination_folder: 'dataLayer'
         user_email: 'matariyasavanh@gmail.com'
         user_name: 'savan60'
         commit_message: 'A custom message for the commit of actions'
